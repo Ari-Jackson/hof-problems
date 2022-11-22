@@ -218,7 +218,16 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore(movies) {}
+function getHighestMetascore(movies) {
+  if(movies.length == 0){
+    return 0
+  }
+
+  return movies.reduce((high, curr) => {
+    const metascore = Number(curr.metascore)
+    return high < metascore? metascore : high
+  }, 0)
+}
 
 /**
  * getAverageIMDBRating()
@@ -231,7 +240,13 @@ function getHighestMetascore(movies) {}
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating(movies) {}
+function getAverageIMDBRating(movies) {
+  if(movies.length == 0){
+    return 0
+  }
+
+  return movies.reduce((total, curr) => total + Number(curr.imdbRating), 0)/movies.length
+}
 
 /**
  * countByRating()
@@ -244,7 +259,16 @@ function getAverageIMDBRating(movies) {}
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating(movies) {}
+function countByRating(movies) {
+  if(movies.length == 0){
+    return {}
+  }
+
+  return movies.reduce((obj, curr) => {
+    obj.hasOwnProperty(curr.rated) ? obj[curr.rated]++ : obj[curr.rated] = 1;
+    return obj
+  },{})
+}
 
 /**
  * getBiggestBoxOfficeMovie()
@@ -257,9 +281,19 @@ function countByRating(movies) {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function convertBoxOfficeToNumber(movie) {}
+const convertBoxOfficeToNumber = movie => Number(movie.boxOffice.slice(1).replaceAll(",",""))
 
-function getBiggestBoxOfficeMovie(movies) {}
+
+function getBiggestBoxOfficeMovie(movies) {
+  if(movies.length == 0){
+    return null
+  }
+  const biggest = movies.reduce((largest, curr) => {
+    return convertBoxOfficeToNumber(largest) < convertBoxOfficeToNumber(curr) ? curr : largest
+  }, movies[0])
+
+  return biggest.title
+}
 
 /**
  * SOME/EVERY PROBLEMS
