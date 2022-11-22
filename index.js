@@ -33,14 +33,18 @@ const exampleSongData = require("./data/songs");
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles(movies) {}
+function getAllMovieTitles(movies) {
+  return movies.map(movie => movie.title)
+}
 
 /**
  * Returns an array of all of the song titles.
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {string[]} An array of strings, all of which are song titles.
  */
-function getSongTitles(songs) {}
+function getSongTitles(songs) {
+  return songs.map(song => song.title)
+}
 
 /**
  * Returns an array of all of the song titles with the artist.
@@ -51,7 +55,9 @@ function getSongTitles(songs) {}
  *  getSongDetails(songs);
  *  //> [ "Berlin Tsukin by Taiyo Ky", "Up by Sebastian Kamae", ... ]
  */
-function getSongDetails(songs) {}
+function getSongDetails(songs) {
+  return songs.map(song => `${song.title} by ${song.artist}`)
+}
 
 /**
  * Returns an array of objects, where each object has a key that is the song title and has a value that is the song artist.
@@ -62,7 +68,11 @@ function getSongDetails(songs) {}
  *  getTitleAndArtist(songs);
  *  //> [ { "Berlin Tsukin": "Taiyo Ky" }, { Up: "Sebastian Kamae" }, ... ]
  */
-function getTitleAndArtist(songs) {}
+function getTitleAndArtist(songs) {
+  return songs.map(song => {
+    return {[song.title]: song.artist}
+  })
+}
 
 /**
  * FIND PROBLEMS
@@ -73,21 +83,27 @@ function getTitleAndArtist(songs) {}
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {Object} A single object.
  */
-function findPinkElephantsByTimestreet(songs) {}
+function findPinkElephantsByTimestreet(songs) {
+  return songs.find(song => song.title == "Pink Elephants")
+}
 
 /**
  * Returns the first song in the list that is under three minutes.
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {Object} A single object.
  */
-function findFirstSongUnderThreeMinutes(songs) {}
+function findFirstSongUnderThreeMinutes(songs) {
+  return songs.find(song => song.runtimeInSeconds < 180)
+}
 
 /**
  * Returns the first song in the list where the song title equals the song album.
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {Object} A single object.
  */
-function findFirstTitleTrack(songs) {}
+function findFirstTitleTrack(songs) {
+  return songs.find(song => song.title == song.album)
+}
 
 /**
  * findById()
@@ -103,8 +119,10 @@ function findFirstTitleTrack(songs) {}
       // Toy Story 4
     };
  */
-function findById(movies, id) {}
-
+function findById(movies, id) {
+  const movie = movies.find(movie => movie.imdbID == id)
+  return  movies.lenght == 0 || !movie ? null : movie
+}
 /**
  * FILTER PROBLEMS
  */

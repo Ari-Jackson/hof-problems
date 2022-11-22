@@ -4,7 +4,7 @@ const {
   getTitleTracks,
 } = require("../index");
 
-describe("getSongsBySaib()", () => {
+describe.skip("getSongsBySaib()", () => {
   let songs;
   beforeEach(() => {
     jest.resetModules();
@@ -36,7 +36,7 @@ describe("getSongsBySaib()", () => {
   });
 });
 
-describe("getSongsOverThreeMinutes()", () => {
+describe.skip("getSongsOverThreeMinutes()", () => {
   let songs;
   beforeEach(() => {
     jest.resetModules();
@@ -88,7 +88,7 @@ describe("getSongsOverThreeMinutes()", () => {
   });
 });
 
-describe("getTitleTracks()", () => {
+describe.skip("getTitleTracks()", () => {
   let songs;
   beforeEach(() => {
     jest.resetModules();
