@@ -137,7 +137,7 @@ describe.only("findById()", () => {
   });
 });
 
-describe("filterByGenre()", () => {
+describe.only("filterByGenre()", () => {
   test("should return all movies that include the specified genre", () => {
     const genre = "Mystery";
     const actual = filterByGenre(movies, genre);
@@ -196,7 +196,7 @@ describe("filterByGenre()", () => {
   });
 });
 
-describe("getAllMoviesReleasedAtOrBeforeYear()", () => {
+describe.only("getAllMoviesReleasedAtOrBeforeYear()", () => {
   test("should return all movies where the `released` date is equal to or less than the year given", () => {
     const year = 2000;
     const actual = getAllMoviesReleasedAtOrBeforeYear(movies, year);

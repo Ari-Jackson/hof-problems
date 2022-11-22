@@ -4,7 +4,7 @@ const {
   anySongIsByPeanut,
 } = require("../index");
 
-describe.skip("allSongsAreOverTwoMinutes()", () => {
+describe("allSongsAreOverTwoMinutes()", () => {
   let songs;
   beforeEach(() => {
     jest.resetModules();
@@ -25,7 +25,7 @@ describe.skip("allSongsAreOverTwoMinutes()", () => {
   });
 });
 
-describe.skip("anySongIsOverFourMinutes()", () => {
+describe("anySongIsOverFourMinutes()", () => {
   let songs;
   beforeEach(() => {
     jest.resetModules();
@@ -46,7 +46,7 @@ describe.skip("anySongIsOverFourMinutes()", () => {
   });
 });
 
-describe.skip("anySongIsByPeanut()", () => {
+describe("anySongIsByPeanut()", () => {
   let songs;
   beforeEach(() => {
     jest.resetModules();

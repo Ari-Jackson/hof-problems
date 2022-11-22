@@ -132,21 +132,27 @@ function findById(movies, id) {
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {Object[]} An array of objects.
  */
-function getSongsBySaib(songs) {}
+function getSongsBySaib(songs) {
+  return songs.filter(song => song.artist == "Saib")
+}
 
 /**
  * Returns an array of all songs where the runtime is over three minutes.
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {Object[]} An array of objects.
  */
-function getSongsOverThreeMinutes(songs) {}
+function getSongsOverThreeMinutes(songs) {
+  return songs.filter(song => song.runtimeInSeconds > 180)
+}
 
 /**
  * Returns an array of songs where the song title is the same as the song album.
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {Object[]} An array of objects.
  */
-function getTitleTracks(songs) {}
+function getTitleTracks(songs) {
+  return songs.filter(song => song.title == song.album)
+}
 /**
  * filterByGenre()
  * -----------------------------
@@ -167,17 +173,9 @@ function getTitleTracks(songs) {}
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre(movies, genre) {}
-// const answer = [];
-// for (let i = 0; i < movies.length; i++) {
-//   if (
-//     movies[i].genre.toLowerCase().split(", ").includes(genre.toLowerCase())
-//   ) {
-//     answer.push(movies[i]);
-//   }
-// }
-
-// return answer;
+function filterByGenre(movies, genre) {
+  return movies.filter(movie => movie.genre.toLowerCase().includes(genre.toLowerCase()))
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -201,7 +199,9 @@ function filterByGenre(movies, genre) {}
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear(movies, year) {}
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+  return movies.filter(movie => Number(movie.released.slice(-4)) <= year)
+}
 
 /*
  * REDUCE PROBLEMS
@@ -270,21 +270,27 @@ function getBiggestBoxOfficeMovie(movies) {}
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {boolean}
  */
-function allSongsAreOverTwoMinutes(songs) {}
+function allSongsAreOverTwoMinutes(songs) {
+  return songs.every(song => song.runtimeInSeconds > 120)
+}
 
 /**
  * Returns `true` if any song is over four minutes. Otherwise, return `false`.
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {boolean}
  */
-function anySongIsOverFourMinutes(songs) {}
+function anySongIsOverFourMinutes(songs) {
+  return songs.some(song => song.runtimeInSeconds > 240)
+}
 
 /**
  * Returns `true` if any song is by the artist "Peanut". Otherwise, return `false`.
  * @param {Object[]} songs - An array of songs. See the song data for more.
  * @returns {boolean}
  */
-function anySongIsByPeanut(songs) {}
+function anySongIsByPeanut(songs) {
+  return songs.some(song => song.artist == "Peanut")
+}
 
 // Do not change anything below this line.
 module.exports = {
